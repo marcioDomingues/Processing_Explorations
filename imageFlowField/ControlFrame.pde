@@ -27,14 +27,14 @@ public class ControlFrame extends PApplet {
         .setPosition(10, 30)
           .setSize(20, 20)
             .setValue(true);
-            
-     cp5.addToggle("parallel")
+
+    cp5.addToggle("parallel")
       .plugTo(parent, "parallel")
         .setPosition(50, 30)
           .setSize(20, 20)
             .setValue(true);
-            
-     cp5.addToggle("backgroundImage")
+
+    cp5.addToggle("backgroundImage")
       .plugTo(parent, "backgroundImage")
         .setPosition(90, 30)
           .setSize(20, 20)
@@ -48,15 +48,21 @@ public class ControlFrame extends PApplet {
 
     cp5.addSlider("vectorMultiplier")
       .plugTo(parent, "vectorMultiplier")
-        .setRange(0, 50)
+        .setRange(-50, 50)
           .setPosition(10, 100)
             .setValue(10);
-            
-   cp5.addSlider("cellsize")
+
+    cp5.addSlider("cellsize")
       .plugTo(parent, "cellsize")
-        .setRange(0, 20)
+        .setRange(1, 20)
           .setPosition(10, 130)
             .setValue(8);
+
+    cp5.addSlider("blurAmout")
+      .plugTo(parent, "blurAmout")
+        .setRange(-5.0, 5.0)
+          .setPosition(10, 160)
+            .setValue(1.0);
   }
 
   public void draw() {
@@ -81,8 +87,4 @@ public class ControlFrame extends PApplet {
   ControlP5 cp5;
 
   Object parent;
-  
-  
 }
-
-
