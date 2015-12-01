@@ -22,47 +22,56 @@ public class ControlFrame extends PApplet {
         .setPosition(10, 10);
 
     // create a toggle and change the default look to a (on/off) switch look
-    cp5.addToggle("vector")
+    cp5.addToggle("field")
       .plugTo(parent, "vector")
         .setPosition(10, 30)
           .setSize(20, 20)
             .setValue(true);
 
-    cp5.addToggle("parallel")
-      .plugTo(parent, "parallel")
+    cp5.addToggle("P_field")
+      .plugTo(parent, "perpendicular")
         .setPosition(50, 30)
           .setSize(20, 20)
             .setValue(true);
 
-    cp5.addToggle("backgroundImage")
+    cp5.addToggle("BG_img")
       .plugTo(parent, "backgroundImage")
         .setPosition(90, 30)
           .setSize(20, 20)
+            .setValue(false);
+            
+    cp5.addToggle("debug_img")
+      .plugTo(parent, "fieldImg")
+        .setPosition(130, 30)
+          .setSize(20, 20)
             .setValue(true);
 
-    cp5.addSlider("vectorIntencity")
-      .plugTo(parent, "vectorIntencity")
-        .setRange(0, 255)
-          .setPosition(10, 80)
-            .setValue(100);
 
-    cp5.addSlider("vectorMultiplier")
-      .plugTo(parent, "vectorMultiplier")
-        .setRange(-50, 50)
-          .setPosition(10, 100)
-            .setValue(10);
-
-    cp5.addSlider("cellsize")
-      .plugTo(parent, "cellsize")
-        .setRange(1, 20)
-          .setPosition(10, 130)
-            .setValue(8);
+//    cp5.addSlider("cellsize")
+//      //conect to class variable
+//      .plugTo(parent, "cellsize")
+//        .setRange(4, 20)
+//          .setPosition(10, 130)
+//            .setValue(10);
 
     cp5.addSlider("blurAmout")
       .plugTo(parent, "blurAmout")
-        .setRange(-5.0, 5.0)
-          .setPosition(10, 160)
-            .setValue(1.0);
+        .setRange(1, 5)
+          .setPosition(10, 80)
+            .setValue(1);
+            
+    
+    cp5.addSlider("vectorIntencity")
+      .plugTo(field, "vectorIntencity")
+        .setRange(0, 255)
+          .setPosition(10, 120)
+            .setValue(100);
+
+    cp5.addSlider("vectorMultiplier")
+      .plugTo(field, "vectorMultiplier")
+        .setRange(-50, 50)
+          .setPosition(10, 140)
+            .setValue(10);
   }
 
   public void draw() {
