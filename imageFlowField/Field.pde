@@ -172,5 +172,24 @@ class Field {
     //line(len,0,len-arrowsize,-arrowsize/2);
     popMatrix();
   }
+  
+// From Daniel Shiffman
+// Flow Field Following
+  PVector lookup(PVector lookup) {
+    
+     int column = int(constrain(lookup.x/resolution, 2, cols-2));
+    int row = int(constrain(lookup.y/resolution, 2, rows-2));
+    return field[column][row].get();
+  }
+
+  PVector parallelLookup(PVector lookup) {
+    
+    int column = int(constrain(lookup.x/resolution, 2, cols-2));
+    int row = int(constrain(lookup.y/resolution, 2, rows-2));
+    return perpendicularField[column][row].get();
+  }
+  
+  
+  
 }
 

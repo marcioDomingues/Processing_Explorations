@@ -27,9 +27,12 @@ boolean backgroundImage = false;
 //Control vars
 int blurAmout = 1;
 
+int n_vehicles=100;
+
 // field object
 Field field;
-
+// An ArrayList of vehicles
+ArrayList<Vehicle> vehicles;
 
 void setup() {
   size(640, 480, P2D);
@@ -70,6 +73,10 @@ void setup() {
   // the ControlFrame class setup() method below.
 
   field = new Field( 640, 480, 8 );
+
+  //shiffman vehicles class
+  vehicles = new ArrayList<Vehicle>();
+  
 }
 
 void draw() {
@@ -77,42 +84,57 @@ void draw() {
     cam.read();
   }
   
-  if( blurAmout!=0 ){
+
+
+  if ( blurAmout!=0 ) {
     cam.filter(BLUR, blurAmout);
   }
-  
- 
+
+
   field.update(cam);
-  
+
   //Display stuff 
   if ( fieldImg ) {
     field.displayPixelField( "RGB" );
-  }else if ( backgroundImage ){
+  } else if ( backgroundImage ) {
     set(0, 0, cam);
-  }else{
-    background(0); 
+  } else {
+     fill(0,5);
+     rect(0,0,width,height);
   }
-  
+
   if ( vector ) {
     field.displayField();
   }
   if ( perpendicular ) {
     field.displayPerpendicularField();
   }
-  
-  
-  
-  
-  
+
+
+  // Tell all the vehicles to follow the flow field
+  for (Vehicle v : vehicles) {
+    if (perpendicular) {
+      v.followParallel(field);
+    } else {
+      v.follow(field);
+    }
+
+    v.run();
+  }
 }
 
-
-
-//void keyPressed() {
-//  if (key == ' ') {
-//    debug = !debug;
-//  }
-//}
+void keyPressed() {
+  if (key == ' ') {
+    vehicles.clear();
+  } else if ( key == 'n' ) {
+    // Make a whole bunch of vehicles with random maxspeed and maxforce values
+    for (int i = 0; i < n_vehicles; i++) {
+      vehicles.add(new Vehicle(new PVector(random(width), random(height)), random(2, 5), random(0.1, 0.5)));
+    }
+  }else if ( key == 'b' ) {
+    background(0);
+  }
+}
 
 
 
@@ -128,6 +150,4 @@ ControlFrame addControlFrame(String theName, int theWidth, int theHeight) {
   f.setVisible(true);
   return p;
 }
-
-
 

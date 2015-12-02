@@ -39,7 +39,7 @@ public class ControlFrame extends PApplet {
         .setPosition(90, 30)
           .setSize(20, 20)
             .setValue(false);
-            
+
     cp5.addToggle("debug_img")
       .plugTo(parent, "fieldImg")
         .setPosition(130, 30)
@@ -47,20 +47,20 @@ public class ControlFrame extends PApplet {
             .setValue(true);
 
 
-//    cp5.addSlider("cellsize")
-//      //conect to class variable
-//      .plugTo(parent, "cellsize")
-//        .setRange(4, 20)
-//          .setPosition(10, 130)
-//            .setValue(10);
+    //    cp5.addSlider("cellsize")
+    //      //conect to class variable
+    //      .plugTo(parent, "cellsize")
+    //        .setRange(4, 20)
+    //          .setPosition(10, 130)
+    //            .setValue(10);
 
     cp5.addSlider("blurAmout")
       .plugTo(parent, "blurAmout")
         .setRange(1, 5)
           .setPosition(10, 80)
             .setValue(1);
-            
-    
+
+
     cp5.addSlider("vectorIntencity")
       .plugTo(field, "vectorIntencity")
         .setRange(0, 255)
@@ -72,6 +72,12 @@ public class ControlFrame extends PApplet {
         .setRange(-50, 50)
           .setPosition(10, 140)
             .setValue(10);
+
+    cp5.addSlider("n_vehicles")
+      .plugTo(parent, "n_vehicles")
+        .setRange(10, 5000)
+          .setPosition(10, 160)
+            .setValue(100);
   }
 
   public void draw() {
@@ -97,3 +103,4 @@ public class ControlFrame extends PApplet {
 
   Object parent;
 }
+
