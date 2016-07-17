@@ -15,17 +15,18 @@ float dB = 0.5;
 //test
 //float feed=0.06, k=0.0649; 
 //generic values
-//float feed = 0.055;
+// float feed = 0.055;
 //float k = 0.062;
 //mitosis simulation 
-float feed=0.0367, k=0.0649; 
+//float feed=0.0367, k=0.0649; 
 //coral growth simulation 
 //float feed=0.0545, k=0.062;
 
 //steady-state equilibrium concentrations
 //float feed=0.026, k=0.049;
 
-
+//testing others
+float feed=0.078, k=0.061;
 
 //populate world
 int seedWorld = 20;
@@ -170,7 +171,7 @@ void swap() {
 }
 
 void draw() {
-  println(frameRate);
+  //println(frameRate);
 
   for (int i = 0; i < 1; i++) {
     update();
