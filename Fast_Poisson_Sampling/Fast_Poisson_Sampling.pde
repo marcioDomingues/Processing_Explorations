@@ -52,7 +52,7 @@ void draw() {
   // while (active.size()>0)
   //but we can use the draw loop 
   //and this way we can visualize the thing growing
-
+  
   //try to find one in 25 tries
   //for (int total = 0; total < 25; total++) {
     if (active.size() > 0) {
@@ -82,8 +82,8 @@ void draw() {
         int row = floor(sample.y / w); 
 
         if (col > -1 && row > -1 && col < cols && row < rows 
-          /*&& grid[col + row * cols].x != -1 
-          && grid[col + row * cols].y != -1 */) {
+          && grid[col + row * cols].x == -1 
+          && grid[col + row * cols].y == -1 ) {
           boolean ok = true;
           for (int i = -1; i <= 1; i++) {
             for (int j = -1; j <= 1; j++) {
